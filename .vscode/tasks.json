@@ -1,0 +1,76 @@
+// Makefile
+// ${workspaceRoot} the path of the folder opened in VS Code
+// ${file} the current opened file
+// ${fileBasename} the current opened file's basename
+// ${fileDirname} the current opened file's dirname
+// ${fileExtname} the current opened file's extension
+// ${cwd} the task runner's current working directory on startup
+{
+    "version": "2.0.0",
+    "command": "bash",
+    "options": {
+        "cwd": "${workspaceRoot}",
+        "env": {
+            "target": "dvbudy-linux-a13"
+            //"target": "dvbudy-linux",
+        },        
+    },
+	"args": [
+        "-c"
+    ],
+    "tasks": [
+        {
+            "label": "run",
+            "args": [
+                "./build/dvbudy.dvbudy-linux.elf"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "build",
+            "args": [
+                "make TARGET=$target V=0"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "clear": true                        
+            }
+        },
+        {
+            "label": "clean",
+            "args": [
+                "make TARGET=$target clean"
+            ],
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "upgrade",
+            "args": [
+                "make TARGET=$target upgrade"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "release",
+            "args": [
+                "make TARGET=$target install"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "load",
+            "args": [
+                "make TARGET=$target load"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}

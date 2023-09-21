@@ -1,0 +1,7 @@
+{
+    "C_Cpp.errorSquiggles": "Disabled",
+    "files.associations": {
+        "sph_luffa.h": "c",
+        "sph_simd.h": "c"
+    }
+}
